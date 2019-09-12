@@ -12,5 +12,9 @@ after_success:
   - docker build -t lawrenceobrero/multi-docker-server ./server
   - docker build -t lawrenceobrero/multi-docker-worker ./worker
   # Log in to the docker CLI
-  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to docker hub
+  - docker push lawrenceobrero/multi-docker-client
+  - docker push lawrenceobrero/multi-docker-nginx
+  - docker push lawrenceobrero/multi-docker-server
+  - docker push lawrenceobrero/multi-docker-worker
